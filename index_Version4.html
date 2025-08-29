@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>vision-x | الصفحة الرئيسية</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Cairo:wght@400;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Cairo', Arial, sans-serif;
+      background: linear-gradient(135deg, #0b1c2c 70%, #1e3556 100%);
+      color: #fff;
+      direction: rtl;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 16px;
+    }
+    header {
+      background: rgba(15,28,44,0.98);
+      border-bottom: 1px solid #163050;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .logo {
+      font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #6ddafc;
+      text-shadow: 0 2px 10px #163050;
+    }
+    nav ul {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      font-size: 1.04rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #6ddafc;
+    }
+    .lang-switch {
+      background: #163050;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 7px 18px;
+      margin-right: 10px;
+      cursor: pointer;
+      font-family: 'Cairo', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .lang-switch:hover {
+      background: #2b5384;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80') center/cover;
+      min-height: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(15,28,44,0.76);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 40px 16px;
+    }
+    .hero-title {
+      font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+      font-size: 2.6rem;
+      color: #6ddafc;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 10px #163050;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      margin-bottom: 27px;
+      color: #e2f9ff;
+      line-height: 1.7;
+    }
+    .hero-btn {
+      background: #6ddafc;
+      color: #163050;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 7px;
+      padding: 13px 34px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 10px #16305050;
+      transition: background 0.2s;
+    }
+    .hero-btn:hover {
+      background: #3bb4e9;
+      color: #fff;
+    }
+    section {
+      padding: 54px 0 30px 0;
+      border-bottom: 1px solid #163050;
+    }
+    .section-title {
+      font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+      color: #6ddafc;
+      font-size: 2rem;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .card {
+      background: rgba(15,28,44,0.95);
+      border-radius: 14px;
+      box-shadow: 0 4px 24px #16305041;
+      max-width: 285px;
+      flex: 1 1 285px;
+      min-width: 230px;
+      padding: 30px 22px;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 10px;
+      border: 1.5px solid #203a61;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-7px) scale(1.04);
+      border-color: #6ddafc;
+    }
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #6ddafc;
+      margin-bottom: 11px;
+    }
+    .card-desc {
+      font-size: 1rem;
+      color: #e2f9ff;
+      line-height: 1.6;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-text {
+      flex: 1 1 350px;
+      min-width: 260px;
+      font-size: 1.13rem;
+      color: #e2f9ff;
+      line-height: 1.7;
+      margin-bottom: 13px;
+    }
+    .about-img {
+      flex: 1 1 300px;
+      min-width: 220px;
+      max-width: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #16305041;
+      background: #203a61;
+    }
+    .about-img img {
+      width: 100%;
+      display: block;
+    }
+    .success-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+    .success-card {
+      background: rgba(15,28,44,0.93);
+      border-radius: 12px;
+      max-width: 340px;
+      padding: 18px 22px;
+      color: #fff;
+      margin-bottom: 10px;
+      border: 1.5px solid #203a61;
+      box-shadow: 0 2px 10px #16305030;
+    }
+    .success-card p {
+      font-size: 1rem;
+      color: #e2f9ff;
+    }
+    .success-card .client {
+      font-size: 0.98rem;
+      color: #6ddafc;
+      font-weight: bold;
+      margin-top: 7px;
+    }
+    .blog-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .blog-card {
+      background: rgba(15,28,44,0.91);
+      border-radius: 12px;
+      max-width: 320px;
+      padding: 20px 20px 15px 20px;
+      color: #fff;
+      border: 1.5px solid #203a61;
+      box-shadow: 0 2px 10px #16305020;
+    }
+    .blog-card-title {
+      color: #6ddafc;
+      font-weight: bold;
+      font-size: 1.07rem;
+      margin-bottom: 8px;
+    }
+    .blog-card-desc {
+      font-size: 0.97rem;
+      color: #e2f9ff;
+      margin-bottom: 6px;
+    }
+    .testimonials-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .testimonial-card {
+      background: rgba(15,28,44,0.95);
+      border-radius: 14px;
+      box-shadow: 0 2px 14px #16305041;
+      max-width: 300px;
+      flex: 1 1 300px;
+      min-width: 220px;
+      padding: 22px 18px;
+      color: #fff;
+      border: 1.5px solid #203a61;
+      margin-bottom: 10px;
+    }
+    .testimonial-text {
+      font-size: 1.07rem;
+      color: #e2f9ff;
+      margin-bottom: 8px;
+    }
+    .testimonial-client {
+      color: #6ddafc;
+      font-weight: bold;
+    }
+    .stats-counters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .counter-card {
+      background: rgba(15,28,44,0.95);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px #16305030;
+      max-width: 170px;
+      flex: 1 1 170px;
+      min-width: 130px;
+      padding: 25px 13px;
+      color: #fff;
+      border: 1.5px solid #203a61;
+      text-align: center;
+    }
+    .counter-num {
+      font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+      font-size: 2.1rem;
+      color: #6ddafc;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .counter-label {
+      font-size: 1.07rem;
+      color: #e2f9ff;
+    }
+    .contact-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 38px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .contact-form {
+      background: rgba(15,28,44,0.97);
+      border-radius: 10px;
+      padding: 28px 25px;
+      min-width: 270px;
+      max-width: 380px;
+      color: #fff;
+      border: 1.5px solid #203a61;
+      box-shadow: 0 2px 10px #16305030;
+      margin-bottom: 10px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 16px;
+      border-radius: 5px;
+      border: 1px solid #203a61;
+      background: #1e3556;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Cairo', Arial, sans-serif;
+    }
+    .contact-form button {
+      background: #6ddafc;
+      color: #163050;
+      font-weight: bold;
+      border: none;
+      border-radius: 7px;
+      padding: 10px 22px;
+      cursor: pointer;
+      font-size: 1.03rem;
+      transition: background 0.2s;
+    }
+    .contact-form button:hover {
+      background: #3bb4e9;
+      color: #fff;
+    }
+    .contact-info {
+      min-width: 220px;
+      max-width: 330px;
+      background: rgba(15,28,44,0.97);
+      border-radius: 10px;
+      padding: 25px 22px;
+      color: #fff;
+      border: 1.5px solid #203a61;
+      box-shadow: 0 2px 10px #16305030;
+      margin-bottom: 10px;
+      font-size: 1.09rem;
+    }
+    .contact-info .ceo {
+      font-weight: bold;
+      color: #6ddafc;
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+    .contact-info .info-label {
+      color: #6ddafc;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+    .contact-info .info-value {
+      color: #e2f9ff;
+      margin-bottom: 8px;
+    }
+    footer {
+      background: #142940;
+      color: #e2f9ff;
+      text-align: center;
+      padding: 22px 0 8px 0;
+      font-size: 0.97rem;
+      border-top: 1px solid #163050;
+      margin-top: 40px;
+    }
+    .footer-links {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: #6ddafc;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .footer-contact {
+      margin-bottom: 8px;
+    }
+    #floating-lang-btn {
+      position: fixed;
+      left: 18px;
+      bottom: 22px;
+      z-index: 101;
+      padding: 10px 18px;
+      background: #6ddafc;
+      color: #163050;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      font-family: 'Cairo', Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #16305050;
+      transition: background 0.2s;
+    }
+    #floating-lang-btn:hover {
+      background: #3bb4e9;
+      color: #fff;
+    }
+    #chatbot-btn {
+      position: fixed;
+      left: 18px;
+      bottom: 80px;
+      z-index: 102;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #16305070;
+      transition: transform 0.2s;
+    }
+    #chatbot-btn:hover {
+      transform: scale(1.08);
+    }
+    #chatbot-popup {
+      position: fixed;
+      left: 16px;
+      bottom: 130px;
+      z-index: 103;
+      width: 320px;
+      max-width: 98vw;
+      background: #142940;
+      border-radius: 13px;
+      box-shadow: 0 4px 24px #16305060;
+      border: 2px solid #6ddafc;
+      overflow: hidden;
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .chatbot-header {
+      background: #6ddafc;
+      color: #163050;
+      padding: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .chatbot-title {
+      font-size: 1.09rem;
+    }
+    #chatbot-close {
+      background: none;
+      border: none;
+      color: #163050;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .chatbot-body {
+      padding: 16px 14px;
+      min-height: 60px;
+      color: #fff;
+    }
+    .chatbot-footer {
+      padding: 10px 12px;
+      background: #163050;
+      display: flex;
+      gap: 10px;
+    }
+    .chat-input {
+      flex: 1 1 auto;
+      padding: 7px 8px;
+      border-radius: 6px;
+      border: 1px solid #203a61;
+      background: #1e3556;
+      color: #fff;
+      font-size: 1rem;
+    }
+    #chatbot-send {
+      background: #6ddafc;
+      color: #163050;
+      border: none;
+      border-radius: 7px;
+      padding: 7px 15px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1.03rem;
+      transition: background 0.2s;
+    }
+    #chatbot-send:hover {
+      background: #3bb4e9;
+      color: #fff;
+    }
+    #whatsapp-btn {
+      position: fixed;
+      left: 18px;
+      bottom: 140px;
+      z-index: 102;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #16305070;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    #whatsapp-btn:hover {
+      transform: scale(1.08);
+    }
+    [lang="en"] {
+      direction: ltr;
+      font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+    }
+    .hidden {
+      display: none !important;
+    }
+    @media (max-width: 800px) {
+      .cards, .about-content, .success-cards, .testimonials-cards, .blog-cards, .stats-counters, .contact-content {
+        flex-direction: column;
+        gap: 22px;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <span class="logo">vision-x</span>
+      <nav>
+        <ul>
+          <li><a href="#home" class="nav-ar">الرئيسية</a><a href="#home" class="nav-en hidden">Home</a></li>
+          <li><a href="#about" class="nav-ar">عن الشركة</a><a href="#about" class="nav-en hidden">About Us</a></li>
+          <li><a href="#services" class="nav-ar">حلول الذكاء الاصطناعي</a><a href="#services" class="nav-en hidden">AI Solutions</a></li>
+          <li><a href="#blog" class="nav-ar">مدونة</a><a href="#blog" class="nav-en hidden">Blog</a></li>
+          <li><a href="#contact" class="nav-ar">تواصل معنا</a><a href="#contact" class="nav-en hidden">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="lang-switch" id="lang-switch">EN</button>
+    </div>
+  </header>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-title hero-title-ar">رؤية الذكاء الاصطناعي لمستقبل أكثر إشراقًا</div>
+      <div class="hero-title hero-title-en hidden">AI Vision for a Brighter Future</div>
+      <div class="hero-desc hero-desc-ar">
+        نحو عصر جديد من الابتكار، حيث تلتقي التقنية مع الشغف لصنع حلول تغير العالم.
+      </div>
+      <div class="hero-desc hero-desc-en hidden">
+        Welcome to a new era of innovation, where technology meets passion to create world-changing solutions.
+      </div>
+      <button class="hero-btn hero-btn-ar">ابدأ رحلتك معنا</button>
+      <button class="hero-btn hero-btn-en hidden">Start Your Journey</button>
+    </div>
+  </section>
+  <section id="services">
+    <div class="container">
+      <div class="section-title section-title-ar">حلولنا الثورية في الذكاء الاصطناعي</div>
+      <div class="section-title section-title-en hidden">Our Revolutionary AI Solutions</div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-title card-title-ar">تحليل البيانات الذكي</div>
+          <div class="card-title card-title-en hidden">Smart Data Analytics</div>
+          <div class="card-desc card-desc-ar">
+            اكتشف رؤى عميقة تساعدك على اتخاذ قرارات دقيقة بسرعة.
+          </div>
+          <div class="card-desc card-desc-en hidden">
+            Discover deep insights that empower you to make fast, precise decisions.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title card-title-ar">التعلم الآلي والتنبؤ</div>
+          <div class="card-title card-title-en hidden">Machine Learning & Prediction</div>
+          <div class="card-desc card-desc-ar">
+            نماذج متقدمة تتعلم من بياناتك وتمنحك أفضل النتائج.
+          </div>
+          <div class="card-desc card-desc-en hidden">
+            Advanced models learn from your data to provide the best outcomes.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title card-title-ar">الرؤية الحاسوبية</div>
+          <div class="card-title card-title-en hidden">Computer Vision</div>
+          <div class="card-desc card-desc-ar">
+            تقنيات كشف وتحليل الصور والفيديو بدقة فائقة.
+          </div>
+          <div class="card-desc card-desc-en hidden">
+            Cutting-edge image and video analysis technologies with unmatched precision.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title card-title-ar">استشارات الذكاء الاصطناعي</div>
+          <div class="card-title card-title-en hidden">AI Consulting</div>
+          <div class="card-desc card-desc-ar">
+            فريقنا يرشدك في رحلة التحول الرقمي من البداية حتى النجاح.
+          </div>
+          <div class="card-desc card-desc-en hidden">
+            Our team guides you through the digital transformation journey from start to success.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- قسم تنظيف المسارات الفضائية -->
+  <section id="path-cleaning">
+    <div class="container">
+      <div class="section-title section-title-ar">تنظيف مسارات الطائرات وبقايا الأقمار الصناعية بالذكاء الاصطناعي</div>
+      <div class="section-title section-title-en hidden">AI-Powered Aircraft Path & Space Debris Cleaning</div>
+      <div class="about-content">
+        <div class="about-text about-text-ar">
+          باستخدام تقنيات الذكاء الاصطناعي والرؤية الحاسوبية، نقدم حلولًا مبتكرة لرصد وتنظيف مسارات الطائرات وبقايا الأقمار الصناعية، مما يساهم في الحفاظ على سلامة المجال الجوي والفضائي ويقلل من المخاطر على المدى البعيد.
+        </div>
+        <div class="about-text about-text-en hidden">
+          With advanced AI and computer vision technologies, we deliver innovative solutions to monitor and clean aircraft paths and space debris, enhancing airspace and orbital safety while reducing long-term risks.
+        </div>
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=600&q=80" alt="Space Cleaning AI">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-title section-title-ar">شهادات نجاح عملائنا</div>
+      <div class="section-title section-title-en hidden">Client Success Stories</div>
+      <div class="testimonials-cards">
+        <div class="testimonial-card">
+          <div class="testimonial-text testimonial-text-ar">
+            "بفضل حلول vision-x، أصبح لدينا قدرة أكبر على تحليل البيانات واتخاذ قرارات أسرع."
+          </div>
+          <div class="testimonial-text testimonial-text-en hidden">
+            "Thanks to vision-x solutions, we now analyze data faster and make quicker decisions."
+          </div>
+          <div class="testimonial-client">شركة Alpha / Alpha Co.</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text testimonial-text-ar">
+            "فريق vision-x كان شريكًا حقيقيًا في رحلة التحول الرقمي للمؤسسة."
+          </div>
+          <div class="testimonial-text testimonial-text-en hidden">
+            "vision-x team was a true partner in our digital transformation journey."
+          </div>
+          <div class="testimonial-client">مؤسسة Beta / Beta Org.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="stats">
+    <div class="container">
+      <div class="section-title section-title-ar">إنجازاتنا بالأرقام</div>
+      <div class="section-title section-title-en hidden">Our Achievements in Numbers</div>
+      <div class="stats-counters">
+        <div class="counter-card">
+          <div class="counter-num" id="tasks-counter">0</div>
+          <div class="counter-label counter-label-ar">عدد المهام المنفذة</div>
+          <div class="counter-label counter-label-en hidden">Tasks Completed</div>
+        </div>
+        <div class="counter-card">
+          <div class="counter-num" id="projects-counter">0</div>
+          <div class="counter-label counter-label-ar">عدد المشاريع</div>
+          <div class="counter-label counter-label-en hidden">Projects</div>
+        </div>
+        <div class="counter-card">
+          <div class="counter-num" id="clients-counter">0</div>
+          <div class="counter-label counter-label-ar">عدد العملاء</div>
+          <div class="counter-label counter-label-en hidden">Clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="container">
+      <div class="section-title section-title-ar">عن vision-x</div>
+      <div class="section-title section-title-en hidden">About vision-x</div>
+      <div class="about-content">
+        <div class="about-text about-text-ar">
+          vision-x تجمع نخبة من العقول في علوم البيانات، الهندسة، والابتكار التقني، لنكون شركاءك في بناء المستقبل.<br>
+          نحن نؤمن أن الذكاء الاصطناعي هو المفتاح لعالم جديد أكثر ذكاءً واستدامة.
+        </div>
+        <div class="about-text about-text-en hidden">
+          vision-x brings together top minds in data science, engineering, and technological innovation to be your partners in building the future.<br>
+          We believe AI is the key to a smarter, more sustainable world.
+        </div>
+        <div class="about-img">
+          <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80" alt="vision-x team">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="success">
+    <div class="container">
+      <div class="section-title section-title-ar">قصص نجاحنا</div>
+      <div class="section-title section-title-en hidden">Our Success Stories</div>
+      <div class="success-cards">
+        <div class="success-card">
+          <p class="success-ar">بفضل حلول vision-x، استطاعت شركة Y زيادة كفاءتها بنسبة 40% خلال ستة أشهر.</p>
+          <p class="success-en hidden">Thanks to vision-x solutions, Company Y increased efficiency by 40% within six months.</p>
+          <div class="client">شركة Y / Company Y</div>
+        </div>
+        <div class="success-card">
+          <p class="success-ar">تطبيق الذكاء الاصطناعي في مؤسسة Z أدى لتحسين جودة الخدمة وتقليل التكاليف.</p>
+          <p class="success-en hidden">AI integration at Organization Z improved service quality and reduced costs.</p>
+          <div class="client">مؤسسة Z / Org. Z</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="blog">
+    <div class="container">
+      <div class="section-title section-title-ar">مدونة الذكاء الاصطناعي</div>
+      <div class="section-title section-title-en hidden">AI Blog</div>
+      <div class="blog-cards">
+        <div class="blog-card">
+          <div class="blog-card-title blog-card-title-ar">كيف يغير الذكاء الاصطناعي عالم الأعمال؟</div>
+          <div class="blog-card-title blog-card-title-en hidden">How is AI Transforming Business?</div>
+          <div class="blog-card-desc blog-card-desc-ar">مقال حول أحدث تطبيقات الذكاء الاصطناعي في الإدارة والتسويق وتحسين العمليات.</div>
+          <div class="blog-card-desc blog-card-desc-en hidden">An article about the latest AI applications in management, marketing, and process optimization.</div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-card-title blog-card-title-ar">آخر تطورات الرؤية الحاسوبية في 2025</div>
+          <div class="blog-card-title blog-card-title-en hidden">Latest Computer Vision Advances in 2025</div>
+          <div class="blog-card-desc blog-card-desc-ar">استعراض لأهم التقنيات الحديثة في تحليل الصور والفيديو.</div>
+          <div class="blog-card-desc blog-card-desc-en hidden">A review of the most important technologies in image and video analysis.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="container">
+      <div class="section-title section-title-ar">تواصل معنا</div>
+      <div class="section-title section-title-en hidden">Contact Us</div>
+      <div class="contact-content">
+        <form class="contact-form contact-form-ar">
+          <input type="text" placeholder="اسمك" required>
+          <input type="email" placeholder="بريدك الإلكتروني" required>
+          <textarea placeholder="رسالتك" rows="4" required></textarea>
+          <button type="submit">إرسال</button>
+        </form>
+        <form class="contact-form contact-form-en hidden">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="4" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div class="contact-info contact-info-ar">
+          <div class="ceo">المدير التنفيذي: م. عبد الرحمن خالد</div>
+          <div class="info-label">البريد الإلكتروني:</div>
+          <div class="info-value">horizon-vision-x@outlook.sa</div>
+          <div class="info-label">الهاتف المحمول:</div>
+          <div class="info-value">+201030276276</div>
+        </div>
+        <div class="contact-info contact-info-en hidden">
+          <div class="ceo">CEO: Eng. ABD EL RAHMAN KHALED</div>
+          <div class="info-label">Email:</div>
+          <div class="info-value">horizon-vision-x@outlook.sa</div>
+          <div class="info-label">Mobile:</div>
+          <div class="info-value">+201030276276</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-links footer-links-ar">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">عن الشركة</a>
+      <a href="#services">حلولنا</a>
+      <a href="#blog">مدونة</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+    <div class="footer-links footer-links-en hidden">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Solutions</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-contact footer-contact-ar">
+      المدير التنفيذي: م. عبد الرحمن خالد | البريد: horizon-vision-x@outlook.sa | الهاتف: +201030276276
+    </div>
+    <div class="footer-contact footer-contact-en hidden">
+      CEO: Eng. ABD EL RAHMAN KHALED | Email: horizon-vision-x@outlook.sa | Mobile: +201030276276
+    </div>
+    <div class="copyright copyright-ar">
+      جميع الحقوق محفوظة &copy; vision-x 2025
+    </div>
+    <div class="copyright copyright-en hidden">
+      All rights reserved &copy; vision-x 2025
+    </div>
+  </footer>
+  <button id="floating-lang-btn">EN</button>
+  <a id="whatsapp-btn" href="https://wa.me/201030276276" target="_blank" title="راسلنا عبر واتساب">
+    <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="19" fill="#25D366" stroke="#163050" stroke-width="2"/>
+      <path d="M26.7 22.3c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.5-.2-.7.2-.2.4-.7 1.2-.9 1.4-.2.2-.4.2-.8.1-2.1-.9-3.5-3-3.7-3.2-.2-.3-.1-.7.1-.8.2-.2.4-.6.6-.8.1-.2.1-.3.2-.5.1-.2 0-.4-.1-.6-.1-.2-.7-1.7-.9-2.3-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.5.2.2 2.3 3.5 6.1 3.5 3.4 0 4.1-2.1 4.2-2.5.1-.3.1-.5.1-.7s-.1-.4-.5-.6z" fill="#fff"/>
+    </svg>
+  </a>
+  <div id="chatbot-btn" title="الدردشة مع فريق vision-x">
+    <svg width="38" height="38" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="19" fill="#6ddafc" stroke="#163050" stroke-width="2"/>
+      <path d="M12 18c0-4 3.5-7 8-7s8 3 8 7c0 2.8-2 5.2-5 6.3V31l-2.5-2.5-2.5 2.5v-6.7c-3-1.1-5-3.5-5-6.3z" fill="#163050"/>
+    </svg>
+  </div>
+  <div id="chatbot-popup" class="hidden">
+    <div class="chatbot-header">
+      <span class="chatbot-title chatbot-title-ar">شات بوت vision-x</span>
+      <span class="chatbot-title chatbot-title-en hidden">vision-x Chatbot</span>
+      <button id="chatbot-close">&times;</button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-msg chatbot-msg-ar">مرحبًا بك! كيف يمكنني مساعدتك اليوم؟</div>
+      <div class="chatbot-msg chatbot-msg-en hidden">Welcome! How can I help you today?</div>
+    </div>
+    <div class="chatbot-footer">
+      <input type="text" placeholder="اكتب رسالتك..." class="chat-input chat-input-ar">
+      <input type="text" placeholder="Type your message..." class="chat-input chat-input-en hidden">
+      <button id="chatbot-send">إرسال</button>
+    </div>
+  </div>
+  <script>
+    // تبديل اللغة
+    const langSwitch = document.getElementById('lang-switch');
+    const floatLangBtn = document.getElementById('floating-lang-btn');
+    let currentLang = 'ar';
+    function toggleLang() {
+      currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+      const arElements = document.querySelectorAll('[class*="-ar"]');
+      const enElements = document.querySelectorAll('[class*="-en"]');
+      if (currentLang === 'en') {
+        document.body.setAttribute('lang', 'en');
+        document.body.setAttribute('dir', 'ltr');
+        arElements.forEach(e => e.classList.add('hidden'));
+        enElements.forEach(e => e.classList.remove('hidden'));
+        langSwitch.textContent = "AR";
+        floatLangBtn.textContent = "AR";
+      } else {
+        document.body.setAttribute('lang', 'ar');
+        document.body.setAttribute('dir', 'rtl');
+        arElements.forEach(e => e.classList.remove('hidden'));
+        enElements.forEach(e => e.classList.add('hidden'));
+        langSwitch.textContent = "EN";
+        floatLangBtn.textContent = "EN";
+      }
+    }
+    langSwitch.addEventListener('click', toggleLang);
+    floatLangBtn.addEventListener('click', toggleLang);
+    // عدّادات الإنجاز (يمكنك تعديل الأرقام)
+    function animateCounter(id, target) {
+      const el = document.getElementById(id);
+      let num = 0;
+      const step = Math.ceil(target / 60);
+      const interval = setInterval(() => {
+        num += step;
+        if (num >= target) {
+          num = target;
+          clearInterval(interval);
+        }
+        el.textContent = num;
+      }, 15);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounter('tasks-counter', 128);
+      animateCounter('projects-counter', 24);
+      animateCounter('clients-counter', 13);
+    });
+    // الشات بوت
+    const chatbotBtn = document.getElementById('chatbot-btn');
+    const chatbotPopup = document.getElementById('chatbot-popup');
+    const chatbotClose = document.getElementById('chatbot-close');
+    chatbotBtn.addEventListener('click', () => {
+      chatbotPopup.classList.toggle('hidden');
+    });
+    chatbotClose.addEventListener('click', () => {
+      chatbotPopup.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
